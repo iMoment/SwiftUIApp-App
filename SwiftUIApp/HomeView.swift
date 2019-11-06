@@ -14,8 +14,14 @@ struct HomeView: View {
     
     var body: some View {
         ZStack(alignment: .topLeading) {
+            
+            HomeList()
+                .blur(radius: show ? 20 : 0)
+                .scaleEffect(showProfile ? 0.95 : 1)
+                .animation(.default)
+            
             ContentView()
-                .background(Color.white)
+//                .background(Color.white)
                 .cornerRadius(30)
                 .shadow(radius: 20)
                 .animation(.spring(response: 0.45, dampingFraction: 0.885, blendDuration: 0))
