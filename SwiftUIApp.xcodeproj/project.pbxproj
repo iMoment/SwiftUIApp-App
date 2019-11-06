@@ -14,6 +14,7 @@
 		9112990A2371DA8E00B7237A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 911299092371DA8E00B7237A /* Preview Assets.xcassets */; };
 		9112990D2371DA8E00B7237A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9112990B2371DA8E00B7237A /* LaunchScreen.storyboard */; };
 		918709482372FCC4008DD2E4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918709472372FCC4008DD2E4 /* HomeView.swift */; };
+		9187094A2373474C008DD2E4 /* HomeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918709492373474C008DD2E4 /* HomeList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		9112990C2371DA8E00B7237A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9112990E2371DA8E00B7237A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		918709472372FCC4008DD2E4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		918709492373474C008DD2E4 /* HomeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				911299022371DA8A00B7237A /* SceneDelegate.swift */,
 				911299042371DA8A00B7237A /* ContentView.swift */,
 				918709472372FCC4008DD2E4 /* HomeView.swift */,
+				918709492373474C008DD2E4 /* HomeList.swift */,
 				911299062371DA8E00B7237A /* Assets.xcassets */,
 				9112990B2371DA8E00B7237A /* LaunchScreen.storyboard */,
 				9112990E2371DA8E00B7237A /* Info.plist */,
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				911299012371DA8A00B7237A /* AppDelegate.swift in Sources */,
+				9187094A2373474C008DD2E4 /* HomeList.swift in Sources */,
 				918709482372FCC4008DD2E4 /* HomeView.swift in Sources */,
 				911299032371DA8A00B7237A /* SceneDelegate.swift in Sources */,
 				911299052371DA8A00B7237A /* ContentView.swift in Sources */,
