@@ -17,6 +17,7 @@
 		9135141223741808007AB1D3 /* UpdateDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9135141123741808007AB1D3 /* UpdateDetail.swift */; };
 		9135141423741EF7007AB1D3 /* UpdateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9135141323741EF7007AB1D3 /* UpdateStore.swift */; };
 		9135141623744323007AB1D3 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9135141523744323007AB1D3 /* TabBar.swift */; };
+		9135141823744D06007AB1D3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9135141723744D06007AB1D3 /* Settings.swift */; };
 		918709482372FCC4008DD2E4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918709472372FCC4008DD2E4 /* HomeView.swift */; };
 		9187094A2373474C008DD2E4 /* HomeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918709492373474C008DD2E4 /* HomeList.swift */; };
 		9187094C23735736008DD2E4 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9187094B23735736008DD2E4 /* BlurView.swift */; };
@@ -35,6 +36,7 @@
 		9135141123741808007AB1D3 /* UpdateDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDetail.swift; sourceTree = "<group>"; };
 		9135141323741EF7007AB1D3 /* UpdateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStore.swift; sourceTree = "<group>"; };
 		9135141523744323007AB1D3 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		9135141723744D06007AB1D3 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		918709472372FCC4008DD2E4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		918709492373474C008DD2E4 /* HomeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeList.swift; sourceTree = "<group>"; };
 		9187094B23735736008DD2E4 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				9135140F23741004007AB1D3 /* UpdateList.swift */,
 				9135141123741808007AB1D3 /* UpdateDetail.swift */,
 				9135141323741EF7007AB1D3 /* UpdateStore.swift */,
+				9135141723744D06007AB1D3 /* Settings.swift */,
 				9187094B23735736008DD2E4 /* BlurView.swift */,
 				911299062371DA8E00B7237A /* Assets.xcassets */,
 				9112990B2371DA8E00B7237A /* LaunchScreen.storyboard */,
@@ -176,6 +179,7 @@
 				911299032371DA8A00B7237A /* SceneDelegate.swift in Sources */,
 				911299052371DA8A00B7237A /* ContentView.swift in Sources */,
 				9187094C23735736008DD2E4 /* BlurView.swift in Sources */,
+				9135141823744D06007AB1D3 /* Settings.swift in Sources */,
 				9135141623744323007AB1D3 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

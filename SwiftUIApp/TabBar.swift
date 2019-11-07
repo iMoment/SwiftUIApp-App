@@ -14,15 +14,15 @@ struct TabBar: View {
             HomeView().tabItem({
                 Image("IconHome")
                 Text("Home")
-                }).tag(1)
+            }).tag(1)
             ContentView().tabItem({
                 Image("IconCards")
                 Text("Certificates")
-                }).tag(2)
-            UpdateList().tabItem({
+            }).tag(2)
+            Settings().tabItem({
                 Image("IconSettings")
-                Text("Updates")
-                }).tag(3)
+                Text("Settings")
+            }).tag(3)
         }
     }
 }
