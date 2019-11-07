@@ -8,142 +8,160 @@
 
 import SwiftUI
 
+//  'statusBarFrame' was deprecated in iOS 13.0: Use the statusBarManager property of the window scene instead.
+let statusBarHeight = UIApplication.shared.statusBarFrame.height
+
 struct HomeView: View {
     @State var show = false
-    @State var showProfile = false
+    @State var showCertificates = false
+    @State var viewState = CGSize.zero
+    @State var showLogin = false
+    var menu: [Menu] = menuData
     
     var body: some View {
-        ZStack(alignment: .topLeading) {
+        ZStack {
             
-            HomeList()
-                .blur(radius: show ? 20 : 0)
-                .scaleEffect(showProfile ? 0.95 : 1)
+            HomeList(courses: coursesData)
+                .blur(radius: show ? 50 : 0)
+                .scaleEffect(showLogin ? 0.95 : 1)
                 .animation(.default)
+                .blur(radius: showCertificates ? 20 - viewState.height/10 : 0)
             
-            ContentView()
-//                .background(Color.white)
-                .cornerRadius(30)
-                .shadow(radius: 20)
-                .animation(.spring(response: 0.45, dampingFraction: 0.885, blendDuration: 0))
-                .offset(y: showProfile ? 40 : UIScreen.main.bounds.height)
+            ZStack {
+                Spacer()
+            }
+            .background(Color.black)
+            .opacity(showCertificates ? Double(35-viewState.height/5)/100 : 0)
+            .animation(.default)
             
             MenuButton(show: $show)
-                .offset(x: -30, y: showProfile ? 0 : 80)
-                .animation(.spring())
+                .blur(radius: showCertificates ? 5-viewState.height/30 : 0)
+                .offset(y: -viewState.height/10)
+                .animation(.default)
             
-            MenuRight(show: $showProfile)
-                .offset(x: -16, y: showProfile ? 0 : 88)
-                .animation(.spring())
+            MenuRight(showCertificates: $showCertificates, showLogin: $showLogin)
+                .blur(radius: showCertificates ? 6-viewState.height/30 : 0)
+                .offset(y: -viewState.height/20)
+                .animation(.default)
             
-            MenuView(show: $show)
+            MenuView(menu: menu)
+                .rotation3DEffect(Angle(degrees: show ? 0 : 60), axis: (x: 0, y: 10.0, z: 0))
+                .animation(.easeInOut(duration: 0.3))
+                .offset(x: show ? 0 : -UIScreen.main.bounds.width)
+                .onTapGesture {
+                    self.show.toggle()
+                }
+            
+            ContentView()
+                .cornerRadius(showCertificates ? viewState.height/5 : 30)
+                .shadow(color: Color("buttonShadow"), radius: 30, x: 0, y: 0)
+                .offset(y: showCertificates ? 0 : screen.height + 200)
+                .offset(y: viewState.height)
+                .rotationEffect(Angle(degrees: showCertificates ? 0 : -30))
+                .animation(.default)
+                .scaleEffect(1-viewState.height/1000)
+                .onTapGesture {
+                    self.showCertificates.toggle()
+                }
+                .gesture(
+                    DragGesture()
+                    .onChanged { value in
+                        self.viewState = value.translation
+                    }
+                    .onEnded { value in
+                        if self.viewState.height > 100 {
+                            self.showCertificates = false
+                        }
+                        self.viewState = .zero
+                    }
+                )
+            Login(show: $showLogin)
+                .onTapGesture { self.showLogin.toggle() }
+                .opacity(showLogin ? 1 : 0)
+                .offset(y: showLogin ? 0 : 20)
+                .animation(Animation.easeInOut)
         }
+        .background(Color("background"))
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+//        Group {
+//            HomeView().previewDevice("iPhone SE")
+//            HomeView().previewDevice("iPhone Xr")
+//            HomeView().previewDevice("iPad Pro (9.7-inch)")
+//        }
     }
 }
 
-struct MenuRow: View {
-    var image = "creditcard"
-    var text = "My Account"
-    var body: some View {
-        HStack {
-            Image(systemName: image)
-                .imageScale(.large)
-                .foregroundColor(Color("icons"))
-                .frame(width: 32, height: 32)
-            Text(text)
-                .font(.headline)
-            Spacer()
-        }
-    }
-}
-
-struct MenuView: View {
-    @Binding var show: Bool
-    
-    let menuData = [
-        Menu(title: "My Account", iconName: "person.crop.circle"),
-        Menu(title: "Billing", iconName: "creditcard"),
-        Menu(title: "Team", iconName: "person.and.person"),
-        Menu(title: "Sign out", iconName: "arrow.uturn.down")
-    ]
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            ForEach(menuData) { item in
-                MenuRow(image: item.iconName, text: item.title)
-            }
-            Spacer()
-        }
-        .padding(.top, 20)
-        .padding(30)
-        .frame(minWidth: 0, maxWidth: .infinity)
-        .background(BlurView(style: .systemMaterial))
-        .cornerRadius(30)
-        .padding(.trailing, 60)
-        .shadow(radius: 20)
-        .rotation3DEffect(Angle(degrees: show ? 0 : 90), axis: (x: 0.0, y: 10.0, z: 0.0))
-        .animation(.default)
-        .offset(x: show ? 0 : -UIScreen.main.bounds.width)
-        .onTapGesture {
-            self.show.toggle()
-        }
-    }
-}
-
-struct Menu: Identifiable {
-    var id = UUID()
-    var title: String
-    var iconName: String
-}
-
-struct CircleButton: View {
-    var icon = "person.crop.circle"
-    var body: some View {
-        HStack {
-            Image(systemName: icon)
-                .foregroundColor(.primary)
-        }
-        .frame(width: 44, height: 44)
-        .background(BlurView(style: .systemThickMaterial))
-        .cornerRadius(30)
-        .shadow(color: Color("buttonShadow"), radius: 10, x: 0, y: 10)
-    }
-}
-
-struct MenuButton: View {
+struct MenuButton : View {
     @Binding var show: Bool
     var body: some View {
-        Button(action: { self.show.toggle() }) {
+        return VStack {
             HStack {
+                Button(action: { self.show.toggle() }) {
+                    HStack {
+                        Spacer()
+                        Image("Menu")
+                            .foregroundColor(.primary)
+                    }.padding(17)
+                }
+                .frame(width: 90, height: 56)
+                .background(Color("button"))
+                .cornerRadius(30)
+                .shadow(color: Color("buttonShadow"), radius: 10, y: 10)
+                .offset(x: -42, y: 82)
                 Spacer()
-                Image(systemName: "list.dash")
-                    .foregroundColor(.primary)
             }
-            .padding(.trailing, 20)
-            .frame(width: 90, height: 60)
-            .background(BlurView(style: .systemThickMaterial))
-            .cornerRadius(30)
-            .shadow(color: Color("buttonShadow"), radius: 10, x: 0, y: 10)
+            Spacer()
         }
     }
 }
 
-struct MenuRight: View {
-    @Binding var show: Bool
+struct MenuRight : View {
+    @Binding var showCertificates: Bool
+    @State var showUpdateList = false
+    @Binding var showLogin: Bool
+    
     var body: some View {
-        HStack(spacing: 12) {
-            Spacer() //  Added
-            Button(action: { self.show.toggle() }) {
-                CircleButton(icon: "person.crop.circle")
+        return VStack {
+            HStack(spacing: 12) {
+                Spacer()
+                
+                VStack { Image(systemName: "rectangle.stack") }
+                    .frame(width: 44, height: 44)
+                    .background(Color("button"))
+                    .foregroundColor(.primary)
+                    .cornerRadius(22)
+                    .shadow(color: Color("buttonShadow"), radius: 10, x: 0, y: 10)
+                    .onTapGesture { self.showCertificates.toggle() }
+                
+                VStack { Image(systemName: "person.crop.circle") }
+                    .frame(width: 44, height: 44)
+                    .background(Color("button"))
+                    .foregroundColor(.primary)
+                    .cornerRadius(22)
+                    .shadow(color: Color("buttonShadow"), radius: 10, x: 0, y: 10)
+                    .onTapGesture { self.showLogin.toggle() }
+                
+                Button(action: { self.showUpdateList.toggle() }) {
+                    VStack { Image(systemName: "bell") }
+                        .foregroundColor(.primary)
+                        .frame(width: 44, height: 44)
+                        .background(Color("button"))
+                        .cornerRadius(22)
+                        .shadow(color: Color("buttonShadow"), radius: 10, x: 0, y: 10)
+                        .sheet(isPresented: $showUpdateList) {
+                            UpdateList()
+                        }
+                }
             }
-            Button(action: { self.show.toggle() }) {
-                CircleButton(icon: "bell")
-            }
+            .padding().offset(y: 70)
+            
+            Spacer()
         }
     }
 }

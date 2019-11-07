@@ -19,6 +19,13 @@
 		9135141623744323007AB1D3 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9135141523744323007AB1D3 /* TabBar.swift */; };
 		9135141823744D06007AB1D3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9135141723744D06007AB1D3 /* Settings.swift */; };
 		9135141A237457BE007AB1D3 /* CertificateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91351419237457BE007AB1D3 /* CertificateRow.swift */; };
+		9135141C237478F4007AB1D3 /* CardBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9135141B237478F3007AB1D3 /* CardBottom.swift */; };
+		9135141E237479C3007AB1D3 /* CertificateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9135141D237479C3007AB1D3 /* CertificateItem.swift */; };
+		9135142023747DFA007AB1D3 /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9135141F23747DFA007AB1D3 /* CourseView.swift */; };
+		9135142223747E6F007AB1D3 /* CourseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9135142123747E6F007AB1D3 /* CourseRow.swift */; };
+		9135142423747F2E007AB1D3 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9135142323747F2E007AB1D3 /* MenuView.swift */; };
+		913514262374801B007AB1D3 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913514252374801B007AB1D3 /* Login.swift */; };
+		9135142823748300007AB1D3 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9135142723748300007AB1D3 /* Helpers.swift */; };
 		918709482372FCC4008DD2E4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918709472372FCC4008DD2E4 /* HomeView.swift */; };
 		9187094A2373474C008DD2E4 /* HomeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918709492373474C008DD2E4 /* HomeList.swift */; };
 		9187094C23735736008DD2E4 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9187094B23735736008DD2E4 /* BlurView.swift */; };
@@ -39,6 +46,13 @@
 		9135141523744323007AB1D3 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		9135141723744D06007AB1D3 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		91351419237457BE007AB1D3 /* CertificateRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateRow.swift; sourceTree = "<group>"; };
+		9135141B237478F3007AB1D3 /* CardBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBottom.swift; sourceTree = "<group>"; };
+		9135141D237479C3007AB1D3 /* CertificateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateItem.swift; sourceTree = "<group>"; };
+		9135141F23747DFA007AB1D3 /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
+		9135142123747E6F007AB1D3 /* CourseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRow.swift; sourceTree = "<group>"; };
+		9135142323747F2E007AB1D3 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		913514252374801B007AB1D3 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		9135142723748300007AB1D3 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		918709472372FCC4008DD2E4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		918709492373474C008DD2E4 /* HomeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeList.swift; sourceTree = "<group>"; };
 		9187094B23735736008DD2E4 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
@@ -76,16 +90,23 @@
 			children = (
 				911299002371DA8A00B7237A /* AppDelegate.swift */,
 				911299022371DA8A00B7237A /* SceneDelegate.swift */,
-				9135141523744323007AB1D3 /* TabBar.swift */,
 				911299042371DA8A00B7237A /* ContentView.swift */,
+				9135141B237478F3007AB1D3 /* CardBottom.swift */,
+				9135141523744323007AB1D3 /* TabBar.swift */,
 				918709472372FCC4008DD2E4 /* HomeView.swift */,
 				918709492373474C008DD2E4 /* HomeList.swift */,
+				9135142323747F2E007AB1D3 /* MenuView.swift */,
+				913514252374801B007AB1D3 /* Login.swift */,
+				91351419237457BE007AB1D3 /* CertificateRow.swift */,
+				9135141D237479C3007AB1D3 /* CertificateItem.swift */,
+				9135141F23747DFA007AB1D3 /* CourseView.swift */,
+				9135142123747E6F007AB1D3 /* CourseRow.swift */,
+				9135141723744D06007AB1D3 /* Settings.swift */,
 				9135140F23741004007AB1D3 /* UpdateList.swift */,
 				9135141123741808007AB1D3 /* UpdateDetail.swift */,
 				9135141323741EF7007AB1D3 /* UpdateStore.swift */,
-				9135141723744D06007AB1D3 /* Settings.swift */,
-				91351419237457BE007AB1D3 /* CertificateRow.swift */,
 				9187094B23735736008DD2E4 /* BlurView.swift */,
+				9135142723748300007AB1D3 /* Helpers.swift */,
 				911299062371DA8E00B7237A /* Assets.xcassets */,
 				9112990B2371DA8E00B7237A /* LaunchScreen.storyboard */,
 				9112990E2371DA8E00B7237A /* Info.plist */,
@@ -173,10 +194,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9135141E237479C3007AB1D3 /* CertificateItem.swift in Sources */,
+				9135142823748300007AB1D3 /* Helpers.swift in Sources */,
 				911299012371DA8A00B7237A /* AppDelegate.swift in Sources */,
+				9135142023747DFA007AB1D3 /* CourseView.swift in Sources */,
+				9135142223747E6F007AB1D3 /* CourseRow.swift in Sources */,
 				9135141423741EF7007AB1D3 /* UpdateStore.swift in Sources */,
 				9135141023741004007AB1D3 /* UpdateList.swift in Sources */,
 				9187094A2373474C008DD2E4 /* HomeList.swift in Sources */,
+				9135142423747F2E007AB1D3 /* MenuView.swift in Sources */,
 				9135141223741808007AB1D3 /* UpdateDetail.swift in Sources */,
 				918709482372FCC4008DD2E4 /* HomeView.swift in Sources */,
 				911299032371DA8A00B7237A /* SceneDelegate.swift in Sources */,
@@ -184,6 +210,8 @@
 				9187094C23735736008DD2E4 /* BlurView.swift in Sources */,
 				9135141823744D06007AB1D3 /* Settings.swift in Sources */,
 				9135141A237457BE007AB1D3 /* CertificateRow.swift in Sources */,
+				913514262374801B007AB1D3 /* Login.swift in Sources */,
+				9135141C237478F4007AB1D3 /* CardBottom.swift in Sources */,
 				9135141623744323007AB1D3 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

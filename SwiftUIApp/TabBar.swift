@@ -11,19 +11,23 @@ import SwiftUI
 struct TabBar: View {
     var body: some View {
         TabView {
-            HomeView().tabItem({
-                Image("IconHome")
-                Text("Home")
+            HomeView()
+                .tabItem({
+                    Image("IconHome")
+                    Text("Home")
             }).tag(1)
-            ContentView().tabItem({
-                Image("IconCards")
-                Text("Certificates")
+            ContentView()
+                .tabItem({
+                    Image("IconCards")
+                    Text("Certificates")
             }).tag(2)
-            Settings().tabItem({
-                Image("IconSettings")
-                Text("Settings")
+            Settings()
+                .tabItem({
+                    Image("IconSettings")
+                    Text("Settings")
             }).tag(3)
         }
+        .edgesIgnoringSafeArea(.top)
     }
 }
 
@@ -31,8 +35,9 @@ struct TabBar_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             TabBar()
-            TabBar()
                 .environment(\.colorScheme, .dark)
+            TabBar()
+                .previewDevice("iPhone Xs Max")
                 .environment(\.sizeCategory, .extraLarge)
         }
     }

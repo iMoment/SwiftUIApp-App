@@ -8,93 +8,61 @@
 
 import SwiftUI
 
-struct HomeList: View {
-    @State var showContent = false
+struct HomeList : View {
+    var courses = coursesData
+    @State var showCourseView = false
     
     var body: some View {
         ScrollView {
-            VStack {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("Courses")
-                            .font(.largeTitle)
-                            .fontWeight(.heavy)
-                        Text("22 courses")
-                            .foregroundColor(.gray)
-                    }
-                    Spacer()
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("Courses").font(.largeTitle).fontWeight(.heavy)
+                    Text("21 courses").foregroundColor(.gray)
                 }
-                .padding(.leading, 70.0)
-                
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 30) {
-                        ForEach(courseData) { item in
-                            Button(action: { self.showContent.toggle() }) {
-                                GeometryReader { geometry in
-                                    CourseView(
-                                        title: item.title,
-                                        image: item.image,
-                                        color: item.color,
-                                        shadowColor: item.shadowColor
-                                    )
-                                        .rotation3DEffect(Angle(degrees:
-                                            Double(geometry.frame(in: .global).minX - 40) / -20
-                                        ),axis: (x: 0.0, y: 10.0, z: 0.0))
-                                        .sheet(isPresented: self.$showContent) { ContentView() }
-                                }
-                                .frame(width: 246, height: 150)
+                Spacer()
+                }
+                .padding(.top, 78)
+                .padding(.leading, 60)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 20) {
+                    ForEach(courses) { course in
+                        GeometryReader { geometry in
+                            Button(action: {self.showCourseView.toggle()}) {
+                                CardView(course: course)
+                                    .rotation3DEffect(Angle(degrees: Double(
+                                        (geometry.frame(in: .global).minX - 30) / -30
+                                    )), axis: (x: 0, y: 10, z: 0))
+                                    .sheet(isPresented: self.$showCourseView) {
+                                        CourseView(title: course.title, image: course.image)
+                                    }
                             }
                         }
+                        .frame(width: 246, height: 360)
                     }
-                    .padding(.leading, 40)
-                    .padding(.top, 30)
-                    Spacer()
-                }
-                .frame(height: 450)
-                CertificateRow()
+                }.padding(30)
+                Spacer()
             }
-            .padding(.top, 78.0)
+            .frame(width: UIScreen.main.bounds.width, height: 480)
+            
+            CertificateRow()
+            
+            CourseRow()
+            
+            Spacer()
         }
     }
 }
 
-struct HomeList_Previews: PreviewProvider {
+#if DEBUG
+struct HomeBack_Previews : PreviewProvider {
     static var previews: some View {
         HomeList()
     }
 }
+#endif
 
-struct CourseView: View {
-    var title = "Build an app with SwiftUI"
-    var image = "Illustration1"
-    var color = Color("background3")
-    var shadowColor = Color("backgroundShadow3")
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(title)
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .padding(30)
-                .lineLimit(4)
-                .padding(.trailing, 50)
-            Spacer()
-            Image(image)
-                .resizable()
-                .renderingMode(.original)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 246, height: 150)
-                .padding(.bottom, 30)
-        }
-        .background(color)
-        .cornerRadius(30)
-        .frame(width: 246, height: 360)
-        .shadow(color: shadowColor, radius: 20, x: 0, y: 20)
-    }
-}
-
-struct Course: Identifiable {
+struct Course : Identifiable {
     var id = UUID()
     var title: String
     var image: String
@@ -102,15 +70,15 @@ struct Course: Identifiable {
     var shadowColor: Color
 }
 
-let courseData = [
+let coursesData = [
     Course(title: "Build an app with SwiftUI",
            image: "Illustration1",
-           color: Color("background3"),
-           shadowColor: Color("backgroundShadow3")),
+           color: Color(hue: 0.677, saturation: 0.701, brightness: 0.788),
+           shadowColor: Color(hue: 0.677, saturation: 0.701, brightness: 0.788, opacity: 0.5)),
     Course(title: "Design and animate your UI",
            image: "Illustration2",
-           color: Color("background4"),
-           shadowColor: Color("backgroundShadow4")),
+           color: Color(red: 0.9254901960784314, green: 0.49411764705882355, blue: 0.4823529411764706),
+           shadowColor: Color(red: 0.9254901960784314, green: 0.49411764705882355, blue: 0.4823529411764706, opacity: 0.5)),
     Course(title: "Swift UI Advanced",
            image: "Illustration3",
            color: Color("background7"),
@@ -125,3 +93,29 @@ let courseData = [
            shadowColor: Color(hue: 0.677, saturation: 0.701, brightness: 0.788, opacity: 0.5)),
 ]
 
+struct CardView : View {
+    var course = Course(title: "", image: "Illustration1", color: Color.white, shadowColor: Color.black)
+    
+    var body: some View {
+        return VStack(alignment: .leading) {
+            Text(course.title)
+                .foregroundColor(.white)
+                .font(.title)
+                .fontWeight(.bold)
+                .lineSpacing(6)
+                .lineLimit(4)
+                .padding(30)
+            Spacer()
+            Image(course.image)
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 246, height: 150)
+                .padding(.bottom, 30)
+        }
+        .background(course.color)
+            .cornerRadius(30)
+            .frame(width: 246, height: 360)
+            .shadow(color: course.shadowColor, radius: 20, x: 0, y: 20)
+    }
+}
